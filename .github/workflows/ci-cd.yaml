@@ -1,0 +1,8 @@
+name: Java CI/CD
+
+on:
+  push:
+    branches:
+      - main
+    path:
+        - Dockerfile
