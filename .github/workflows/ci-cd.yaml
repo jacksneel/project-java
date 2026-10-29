@@ -19,3 +19,12 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
+
+      - name: Compile
+        run: mvn compile
+
+      - name: Run Tests
+        run: mvn test
+
+      - name: Package
+        run: mvn package -DskipTests
