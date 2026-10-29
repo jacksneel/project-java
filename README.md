@@ -32,7 +32,7 @@ This web application displays lists of board games and their reviews. While anyo
   - Authorization by granting different permissions based on the roles (non-members, users, and managers)
 - Different roles (non-members, users, and managers) with varying levels of permissions
   - Non-members only can see the boardgame lists and reviews
-  - Users can add board games and write reviews
+  - Users can add board games and write reviews--
   - Managers can edit and delete the reviews
 - Deployed the application on AWS EC2
 - JUnit test framework for unit testing
