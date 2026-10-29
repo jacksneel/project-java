@@ -53,3 +53,20 @@ jobs:
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/devproject:${{ github.run_number }}
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/devproject:latest
 
+
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+              sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/devproject:latest
+
+              sudo docker stop devproject || true
+              sudo docker rm devproject || true
+
+              sudo docker run -d \
+                --name devproject \
+                -p 8080:8080 \
+                ${{ secrets.DOCKERHUB_USERNAME }}/devproject:latest
